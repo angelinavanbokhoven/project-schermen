@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Service Details – IC 4510</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,700,1,0" rel="stylesheet" />
+
+<style>
+:root{ --bg1:#102d7a; --bg2:#0b2466; --row:#183b98; --row-alt:#15358a; --muted:#c9d6ff; --warn:#ff5a5a; --text:#ecf3ff;}
+*{box-sizing:border-box}
+body{margin:0;font-family:'Inter',sans-serif;background:linear-gradient(180deg,var(--bg1),var(--bg2));color:var(--text);padding:16px}
+.panel{border:1px solid rgba(255,255,255,.12);border-radius:14px;overflow:hidden;background:linear-gradient(180deg,#163a95,#0f2f82 60%);box-shadow:0 20px 45px rgba(0,0,0,.35)}
+.hdr{display:flex;justify-content:space-between;align-items:center;padding:12px 14px;background:#123079}
+.hdr .title{font-weight:700;text-transform:uppercase;display:flex;gap:8px;align-items:center;font-size:16px;letter-spacing:.04em}
+.clock{display:flex;gap:6px;align-items:center;background:#102a6b;padding:6px 10px;border-radius:8px;font-weight:700}
+.sub{display:grid;grid-template-columns:1fr auto;gap:12px;padding:12px 14px;border-top:1px solid rgba(255,255,255,.1)}
+.track{display:flex;gap:6px;align-items:center;background:#102a6b;padding:6px 10px;border-radius:8px;font-weight:700}
+.next{padding:10px 14px;color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.04em}
+.header-row{display:grid;grid-template-columns:90px 1fr 110px;padding:6px 14px;color:var(--muted);font-size:12px;text-transform:uppercase;border-top:1px solid rgba(255,255,255,.1)}
+.row{display:grid;grid-template-columns:90px 1fr 110px;align-items:center;padding:10px 14px;background:var(--row);border-top:1px solid rgba(255,255,255,.08)}
+.row:nth-child(even){background:var(--row-alt)}
+.time{font-variant-numeric:tabular-nums}
+.delay{color:var(--warn);font-weight:700;margin-left:6px}
+.code{opacity:.9;margin-right:8px}
+
+.train-strip{background:#2b36a4;border-radius:18px;display:flex;align-items:center;gap:24px;padding:10px 16px;margin:16px 14px}
+.train-cap{width:64px;height:32px;background:#b9b9c1;border-radius:16px 12px 12px 16px}
+.train-cap.right{border-radius:12px 16px 16px 12px;margin-left:auto}
+.car{background:#ffffff;color:#0d0d0d;border-radius:6px;min-width:160px;height:48px;display:flex;align-items:center;justify-content:center;gap:10px;box-shadow:inset 0 0 0 2px #e6e6e6}
+.car .num{font-weight:600}
+.sym{display:flex;gap:8px;align-items:center}
+.sym .material-symbols-rounded{font-size:22px;line-height:1;color:#000}
+
+</style>
+</head>
+<body>
+<section class="panel">
+  <div class="hdr">
+    <div class="title"><span class="material-symbols-rounded">train</span> {IC 4510} ➔ BRUSSEL / BRUXELLES / BRÜSSEL</div>
+    <div class="clock"><span class="material-symbols-rounded">schedule</span>14:15:01</div>
+  </div>
+  <div class="sub">
+    <div>Vertrek / Départ / Abfahrt: <strong>14:30</strong> <span class="delay">+5</span></div>
+    <div class="track"><span class="material-symbols-rounded">railway_alert</span> Spoor / Voie / Gleis: <strong>7</strong></div>
+  </div>
+  <div class="next">Volgende halte / Prochaine gare / Nächster Halt: Leuven</div>
+
+  <div class="header-row"><div>Tijd</div><div>Halte</div><div>Trein</div></div>
+  <div class="row"><div class="time">14:45</div><div><span class="code">{S 5502}</span> Genk / Gand / Genk</div><div>S 5502</div></div>
+  <div class="row"><div class="time">15:00</div><div><span class="code">{L 4980}</span> Landen / Landen / Landen</div><div>L 4980</div></div>
+  <div class="row"><div class="time">15:15</div><div><span class="code">{IC 2909}</span> Luik / Liège / Lüttich</div><div>IC 2909</div></div>
+  <div class="row"><div class="time">15:45</div><div><span class="code">{L 4981}</span> Tienen / Tirlemont / Thienen <span class="delay">+8</span></div><div>L 4981</div></div>
+  <div class="row"><div class="time">16:00</div><div><span class="code">{L 7832}</span> Aarschot / Aerschot / Aerschot</div><div>L 7832</div></div>
+  <div class="row"><div class="time">16:15</div><div><span class="code">{IC 2406}</span> Brussel-Centraal / Bruxelles-Central / Brüssel-Zentral</div><div>IC 2406</div></div>
+  <div class="row"><div class="time">16:30</div><div><span class="code">{S 5503}</span> Ottignies / Ottignies / Ottignies</div><div>S 5503</div></div>
+  <div class="row"><div class="time">16:45</div><div><span class="code">{IC 2910}</span> Luik / Liège / Lüttich <span class="delay">+10</span></div><div>IC 2910</div></div>
+  <div class="row"><div class="time">17:00</div><div><span class="code">{IC 5137}</span> Hasselt / Hasselt / Hasselt</div><div>IC 5137</div></div>
+  <div class="row"><div class="time">17:15</div><div><span class="code">{IC 2021}</span> Kortrijk / Courtrai / Kortrijk</div><div>IC 2021</div></div>
+
+  
+<div class="train-strip" aria-label="Train composition">
+  <div class="train-cap"></div>
+  <div class="car"><span class="num">1</span></div>
+  <div class="car"><span class="num">2</span><span class="sym"><span class="material-symbols-rounded">wc</span></span></div>
+  <div class="car"><span class="sym"><span class="material-symbols-rounded">accessible</span></span><span class="num">2</span><span class="sym"><span class="material-symbols-rounded">pedal_bike</span></span></div>
+  <div class="car"><span class="num">2</span><span class="sym"><span class="material-symbols-rounded">voice_over_off</span></span></div>
+  <div class="car"><span class="num">1</span></div>
+  <div class="train-cap right"></div>
+</div>
+
+</section>
+</body>
+</html>

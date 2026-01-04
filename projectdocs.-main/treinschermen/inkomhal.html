@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Vertrek</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,700,1,0" rel="stylesheet" />
+<style>
+:root{ --bg1:#0d2c79; --bg2:#12358e; --row:#183b98; --row-alt:#15358a; --text:#ecf3ff; --muted:#c9d6ff; --delay:#ff5a5a; }
+*{box-sizing:border-box}
+body{margin:0;font-family:'Inter',sans-serif;background:linear-gradient(180deg,var(--bg1),var(--bg2));color:var(--text);padding:12px}
+.board{width:100%;min-height:90vh;border-radius:18px;overflow:hidden;border:1px solid rgba(255,255,255,.12);
+background:linear-gradient(180deg,#163a95,#0f2f82 60%);display:flex;flex-direction:column}
+.header{display:flex;justify-content:space-between;align-items:center;padding:18px 20px;background:#123079}
+.title{font-weight:700;text-transform:uppercase;display:flex;gap:10px;align-items:center;font-size:20px;letter-spacing:.05em}
+.clock{display:flex;gap:8px;align-items:center;background:#102a6b;padding:10px 14px;border-radius:10px;font-weight:700;font-size:18px}
+/* Columns: Tijd | Bestemming | Spoor */
+.cols{display:grid;grid-template-columns:.9fr 1.8fr .6fr;align-items:center;padding:10px 20px;font-size:14px;color:var(--muted);text-transform:uppercase;border-top:1px solid rgba(255,255,255,.12)}
+.cols > div:nth-child(3){justify-self:center}
+tbody tr{display:grid;grid-template-columns:.9fr 1.8fr .6fr;align-items:center;padding:14px 20px;font-size:18px;background:var(--row);border-top:1px solid rgba(255,255,255,.08)}
+tbody tr:nth-child(even){background:var(--row-alt)}
+.time{font-variant-numeric:tabular-nums}
+.track{justify-self:center;min-width:34px;height:22px;display:flex;align-items:center;justify-content:center;background:#102a6b;
+border:1px solid rgba(255,255,255,.18);border-radius:6px;font-weight:700;padding:0 8px}
+.delay{color:var(--delay);font-weight:700;margin-left:6px}
+.legend{margin-top:auto;display:flex;gap:14px;align-items:center;padding:12px 20px;color:var(--muted);font-size:14px;border-top:1px solid rgba(255,255,255,.12);background:#0f2f82}
+.pill{background:#0b2a78;border:1px solid rgba(255,255,255,.12);padding:4px 12px;border-radius:999px}
+</style>
+</head>
+<body>
+<section class="board">
+  <div class="header">
+    <div class="title"><span class="material-symbols-rounded">train</span> Vertrek / Départ / Abfahrt</div>
+    <div class="clock"><span class="material-symbols-rounded">schedule</span><span id="clock">14:15:01</span></div>
+  </div>
+
+  <div class="cols"><div>Tijd</div><div>Bestemming</div><div>Spoor</div></div>
+  <table><tbody>
+    <tr><td class="time">14:30 <span class="delay">+5</span></td><td><strong>IC 2406</strong> Brussel / Bruxelles / Brüssel</td><td class="track">7</td></tr>
+    <tr><td class="time">15:10 <span class="delay">+5</span></td><td><strong>IC 2909</strong> Luik / Liège / Lüttich</td><td class="track">5</td></tr>
+    <tr><td class="time">15:36</td><td><strong>S 5502</strong> Gent / Gand / Gent</td><td class="track">9</td></tr>
+    <tr><td class="time">16:03</td><td><strong>IC 5310</strong> Hasselt / Hasselt / Hasselt</td><td class="track">8</td></tr>
+    <tr><td class="time">18:02</td><td><strong>IC 2130</strong> Antwerpen / Anvers / Antwerpen</td><td class="track">3</td></tr>
+    <tr><td class="time">18:22 <span class="delay">+20</span></td><td><strong>IC 4550</strong> Leuven / Louvain / Löwen</td><td class="track">8</td></tr>
+    <tr><td class="time"><span class="delay">Geannuleerd</span></td><td><strong>S 4523</strong> Turnhout</td><td class="track">—</td></tr>
+    <tr><td class="time">19:10</td><td><strong>L 7824</strong> Namen / Namur / Namür</td><td class="track">6</td></tr>
+    <tr><td class="time">19:35</td><td><strong>IC 2007</strong> Mons / Bergen / Mons</td><td class="track">9</td></tr>
+    <tr><td class="time">20:02</td><td><strong>S 5908</strong> Ottignies / Ottignies / Ottignies</td><td class="track">4</td></tr>
+  </tbody></table>
+
+  <div class="legend"><span class="pill">IC</span><span class="pill">S</span><span class="pill">L</span><span>+ = vertraging / retard / verspätung</span></div>
+</section>
+<script>
+const clock=document.getElementById('clock');
+setInterval(()=>clock.textContent=new Date().toLocaleTimeString(),1000);
+</script>
+</body>
+</html>
