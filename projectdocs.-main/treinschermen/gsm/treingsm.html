@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Treinscherm Haltes</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="min-h-screen bg-slate-900 flex items-center justify-center">
+
+<!-- GSM FRAME -->
+<div class="w-[390px] h-[780px] rounded-[32px] bg-gradient-to-b from-[#243ea8] to-[#2b2fa3] p-4 text-white shadow-2xl flex flex-col">
+
+  <!-- TOP BAR -->
+  <div class="rounded-xl bg-[#2f5ed6] p-3 flex items-center justify-between mb-3">
+    <div class="text-sm font-semibold" data-i18n="title">
+      Vertrek / Départ / Abfahrt
+    </div>
+    <div class="text-2xl">🚆</div>
+  </div>
+
+  <!-- HEADER -->
+  <div class="rounded-xl bg-[#355fd1] p-3 flex justify-between items-center mb-3">
+    <div class="text-xs uppercase opacity-80" data-i18n="dest">
+    
+    </div>
+    <div id="clock" class="text-sm font-bold tabular-nums">--:--</div>
+  </div>
+
+  <!-- LIST -->
+  <div class="flex-1 space-y-2 overflow-hidden text-sm">
+
+    <div class="row font-semibold" data-i18n="r1">
+      14:35 Leuven / Louvain / Löwen
+    </div>
+
+    <div class="row" data-i18n="r2">
+      14:42 Herent / Herent / Herent
+    </div>
+
+    <div class="row" data-i18n="r3">
+      14:47 Kortenberg / Kortenberg / Kortenberg
+    </div>
+
+    <div class="row" data-i18n="r4">
+      15:55 Brussel-Noord / Bruxelles-Nord / Brüssel-Nord
+    </div>
+
+    <div class="row" data-i18n="r5">
+      15:00 Brussel-Centraal / Bruxelles-Central / Brüssel-Zentral
+    </div>
+
+  </div>
+
+  <!-- LANGUAGE -->
+  <div class="flex justify-end gap-2 mt-3 text-xs">
+    <button onclick="setLang('nl')" class="px-3 py-1 rounded bg-white/20">NL</button>
+    <button onclick="setLang('fr')" class="px-3 py-1 rounded bg-white/20">FR</button>
+    <button onclick="setLang('de')" class="px-3 py-1 rounded bg-white/20">DE</button>
+  </div>
+
+  <!-- BOTTOM ICONS -->
+  <div class="grid grid-cols-7 gap-2 mt-4 text-xs text-center">
+    <div class="rounded-lg bg-white/15 py-2"></div>
+    <div class="rounded-lg bg-white py-2 text-black">1</div>
+    <div class="rounded-lg bg-white py-2 text-black">2</div>
+    <div class="rounded-lg bg-white py-2 text-black">WC</div>
+    <div class="rounded-lg bg-white py-2 text-black">1♿🚲</div>
+    <div class="rounded-lg bg-white py-2 text-black">2🔇</div>
+      <div class="rounded-lg bg-white/15 py-2"></div>
+    
+  </div>
+
+</div>
+
+<!-- STYLES -->
+<style>
+  .row{
+    background:#4f76e2;
+    padding:0.75rem 1rem;
+    border-radius:0.75rem;
+  }
+</style>
+
+<!-- SCRIPT -->
+<script>
+  /* CLOCK */
+  function updateClock(){
+    const now = new Date();
+    document.getElementById("clock").textContent =
+      now.toLocaleTimeString("nl-BE",{hour:"2-digit",minute:"2-digit"});
+  }
+  updateClock();
+  setInterval(updateClock,1000);
+
+  /* TRANSLATIONS */
+  const t = {
+    nl:{
+      title:"Vertrek",
+      dest:"Bestemming",
+      r1:"14:35 Leuven",
+      r2:"14:42 Herent",
+      r3:"14:47 Kortenberg",
+      r4:"15:55 Brussel-Noord",
+      r5:"15:00 Brussel-Centraal"
+    },
+    fr:{
+      title:"Départ",
+      dest:"Destination",
+      r1:"14:35 Louvain",
+      r2:"14:42 Herent",
+      r3:"14:47 Kortenberg",
+      r4:"15:55 Bruxelles-Nord",
+      r5:"15:00 Bruxelles-Central"
+    },
+    de:{
+      title:"Abfahrt",
+      dest:"Ziel",
+      r1:"14:35 Löwen",
+      r2:"14:42 Herent",
+      r3:"14:47 Kortenberg",
+      r4:"15:55 Brüssel-Nord",
+      r5:"15:00 Brüssel-Zentral"
+    }
+  };
+
+  function setLang(lang){
+    document.querySelectorAll("[data-i18n]").forEach(el=>{
+      el.textContent = t[lang][el.dataset.i18n];
+    });
+  }
+</script>
+
+</body>
+</html>

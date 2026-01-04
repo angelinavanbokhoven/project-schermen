@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vertrekbord GSM</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="min-h-screen bg-[#2f36a3] flex justify-center items-start p-4 text-white">
+
+  <!-- PHONE FRAME -->
+  <div class="w-full max-w-sm rounded-3xl bg-gradient-to-b from-blue-900 to-blue-700 p-4 shadow-2xl">
+
+    <!-- HEADER -->
+    <div class="flex justify-between items-center mb-3">
+      <div class="text-sm uppercase tracking-widest opacity-90" data-key="header">
+        Vertrek / Depart / Abfahrt
+      </div>
+      <div class="text-2xl">🚆</div>
+    </div>
+
+    <!-- DESTINATION BAR -->
+    <div class="bg-blue-600 rounded-xl px-4 py-2 mb-4 flex justify-between items-center">
+      <div class="text-xs uppercase opacity-80" data-key="destination">
+        Bestemming / Destination / Ziel
+      </div>
+      <div id="clock" class="font-bold tabular-nums">--:--</div>
+    </div>
+
+    <!-- MAIN TRAIN INFO -->
+    <div class="grid grid-cols-3 gap-3 mb-4">
+      <div class="col-span-2 bg-blue-500 rounded-xl p-3">
+        <div class="text-xs uppercase opacity-80" data-key="train">Trein</div>
+        <div class="font-bold leading-tight" data-key="mainDestination">
+          Brussel
+        </div>
+        <div class="text-xs opacity-80" data-key="departure">
+          Vertrek
+        </div>
+        <div class="text-lg font-bold">
+          14:30 <span class="text-red-400">+5</span>
+        </div>
+        <div class="text-xs opacity-80" data-key="nextStop">
+          Volgende halte:
+          <span class="font-semibold">Leuven</span>
+        </div>
+      </div>
+
+      <div class="bg-blue-500 rounded-xl p-3 text-center">
+        <div class="text-xs uppercase opacity-80" data-key="track">
+          Spoor
+        </div>
+        <div class="text-3xl font-bold">7</div>
+        <div class="text-xs opacity-80">Voie / Gleis</div>
+      </div>
+    </div>
+
+    <!-- LIST -->
+    <div class="space-y-2 text-sm">
+
+      <div class="row" data-key="genk">14:45 — Genk</div>
+      <div class="row" data-key="landen">15:00 — Landen</div>
+      <div class="row" data-key="liege">15:15 — Luik</div>
+      <div class="row flex justify-between items-center">
+        <span data-key="tienen">15:45 — Tienen</span>
+        <span class="text-red-400 font-bold">+8</span>
+      </div>
+      <div class="row" data-key="aarschot">16:00 — Aarschot</div>
+      <div class="row" data-key="brusselsCentral">16:15 — Brussel-Centraal</div>
+      <div class="row" data-key="ottignies">16:30 — Ottignies</div>
+      <div class="row flex justify-between items-center">
+        <span data-key="liege">16:45 — Luik</span>
+        <span class="text-red-400 font-bold">+10</span>
+      </div>
+      <div class="row" data-key="hasselt">17:00 — Hasselt</div>
+      <div class="row" data-key="kortrijk">17:15 — Kortrijk</div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <div class="mt-4 flex justify-between items-center text-xs opacity-90">
+      <div class="flex gap-2">
+        <button onclick="setLang('nl')" class="px-2 py-1 bg-blue-500 rounded">NL</button>
+        <button onclick="setLang('fr')" class="px-2 py-1 bg-blue-500 rounded">FR</button>
+        <button onclick="setLang('de')" class="px-2 py-1 bg-blue-500 rounded">DE</button>
+      </div>
+      <div class="flex gap-3">
+        <span>1</span>
+        <span>2</span>
+        <span>WC</span>
+        <span>1♿🚲</span>
+        <span>2🔇</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- STYLES -->
+  <style>
+    .row {
+      background: rgba(255,255,255,0.12);
+      padding: 0.6rem 0.8rem;
+      border-radius: 0.75rem;
+    }
+  </style>
+
+  <!-- CLOCK -->
+  <script>
+    function updateClock() {
+      const now = new Date();
+      const h = String(now.getHours()).padStart(2, "0");
+      const m = String(now.getMinutes()).padStart(2, "0");
+      document.getElementById("clock").textContent = `${h}:${m}`;
+    }
+    updateClock();
+    setInterval(updateClock, 1000);
+  </script>
+
+  <!-- TRANSLATIONS -->
+  <script>
+    const t = {
+      nl: {
+        header: "Vertrek",
+        destination: "Bestemming",
+        train: "Trein",
+        mainDestination: "Brussel",
+        departure: "Vertrek",
+        nextStop: "Volgende halte:",
+        track: "Spoor",
+        genk: "14:45 — Genk",
+        landen: "15:00 — Landen",
+        liege: "15:15 — Luik",
+        tienen: "15:45 — Tienen",
+        aarschot: "16:00 — Aarschot",
+        brusselsCentral: "16:15 — Brussel-Centraal",
+        ottignies: "16:30 — Ottignies",
+        hasselt: "17:00 — Hasselt",
+        kortrijk: "17:15 — Kortrijk"
+      },
+      fr: {
+        header: "Départ",
+        destination: "Destination",
+        train: "Train",
+        mainDestination: "Bruxelles",
+        departure: "Départ",
+        nextStop: "Prochaine gare:",
+        track: "Voie",
+        genk: "14:45 — Gand",
+        landen: "15:00 — Landen",
+        liege: "15:15 — Liège",
+        tienen: "15:45 — Tirlemont",
+        aarschot: "16:00 — Aerschot",
+        brusselsCentral: "16:15 — Bruxelles-Central",
+        ottignies: "16:30 — Ottignies",
+        hasselt: "17:00 — Hasselt",
+        kortrijk: "17:15 — Courtrai"
+      },
+      de: {
+        header: "Abfahrt",
+        destination: "Ziel",
+        train: "Zug",
+        mainDestination: "Brüssel",
+        departure: "Abfahrt",
+        nextStop: "Nächster Halt:",
+        track: "Gleis",
+        genk: "14:45 — Genk",
+        landen: "15:00 — Landen",
+        liege: "15:15 — Lüttich",
+        tienen: "15:45 — Thienen",
+        aarschot: "16:00 — Aerschot",
+        brusselsCentral: "16:15 — Brüssel-Zentral",
+        ottignies: "16:30 — Ottignies",
+        hasselt: "17:00 — Hasselt",
+        kortrijk: "17:15 — Kortrijk"
+      }
+    };
+
+    function setLang(lang) {
+      document.querySelectorAll("[data-key]").forEach(el => {
+        el.textContent = t[lang][el.dataset.key];
+      });
+    }
+  </script>
+
+</body>
+</html>
